@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Garvi - Terminal Alpha</title>
+    <title>Intersección - Terminal Alpha</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -17,15 +17,15 @@
             </div>
         </div>
         <div class="terminal-body" id="terminal-output">
-            <div class="terminal-line">Nivel de seguridad: Garvi</div>
-            <div class="terminal-line">Proceda con la respuesta...</div>
+            <div class="terminal-line">Nivel de seguridad: Intersección</div>
+            <div class="terminal-line">Proceda con la respuesta final...</div>
             <div class="terminal-line">&nbsp;</div>
-            <img src="garvi.jpg" alt="Acertijo Garvi" class="puzzle-image">
+            <img src="interseccion.jpg" alt="Acertijo Intersección" class="puzzle-image">
             <div class="terminal-line">&nbsp;</div>
             <div class="terminal-line">> <span id="user-input-display"></span><span class="cursor">█</span></div>
         </div>
         <div class="terminal-input">
-            <input type="text" id="terminal-input" autofocus placeholder="Introduzca la respuesta...">
+            <input type="text" id="terminal-input" autofocus placeholder="Introduzca la respuesta final...">
         </div>
     </div>
     <script src="script.js"></script>
@@ -45,11 +45,13 @@
                     
                     addLineToTerminal('> ' + this.value);
                     
-                    if (normalizedInput === "mato al emperador") {
-                        addLineToTerminal('Correcto. Redirigiendo...');
-                        setTimeout(function() {
-                            window.location.href = 'interseccion.html';
-                        }, 2000);
+                    if (normalizedInput === "al emperador") {
+                        addLineToTerminal('Primera etapa concluída con éxito.');
+                        addLineToTerminal('Para completar el procedimiento, diríjase al primer video subido del canal,');
+                        addLineToTerminal('comente "Yo soy Alpharius" y manténgase a la espera de nuevas instrucciones.');
+                        addLineToTerminal('¡Hydra Dominatus!');
+                        // Deshabilitar el input después del éxito
+                        terminalInput.disabled = true;
                     } else {
                         addLineToTerminal('Incorrecto.');
                     }
