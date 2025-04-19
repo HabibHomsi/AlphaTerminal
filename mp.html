@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terminal Alpha</title>
+    <title>ID_2 - Terminal Alpha</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -17,18 +18,14 @@
             </div>
         </div>
         <div class="terminal-body" id="terminal-output">
-            <div class="terminal-line">██████████████████████████████████████████████████</div>
-            <div class="terminal-line">█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░█</div>
-            <div class="terminal-line">█░░░░░░░ LEGIÓN ALPHA - ACCESO RESTRINGIDO ░░░░░░█</div>
-            <div class="terminal-line">█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░█</div>
-            <div class="terminal-line">██████████████████████████████████████████████████</div>
+            <div class="terminal-line">Nivel de seguridad: ID_2</div>
             <div class="terminal-line">&nbsp;</div>
-            <div class="terminal-line">Terminal de la Legión Alpha. Identifíquese.</div>
+            <img src="identidad_sin_cadenas_2.jpg" alt="Acertijo identidad_sin_cadenas_2" class="puzzle-image">
             <div class="terminal-line">&nbsp;</div>
             <div class="terminal-line">> <span id="user-input-display"></span><span class="cursor">█</span></div>
         </div>
         <div class="terminal-input">
-            <input type="text" id="terminal-input" autofocus placeholder="Nombre">
+            <input type="text" id="terminal-input" autofocus placeholder="Introduzca la respuesta...">
         </div>
     </div>
     <script src="script.js"></script>
@@ -43,19 +40,20 @@
             
             terminalInput.addEventListener('keypress', function(e) {
                 if (e.key === 'Enter') {
-                    const input = this.value.trim();
+                    const input = this.value.trim().toLowerCase();
+                    const normalizedInput = input.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
                     
                     // Añadir el comando a la terminal
-                    addLineToTerminal('> ' + input);
+                    addLineToTerminal('> ' + this.value);
                     
-                    // Verificar si el input contiene "Alpharius" (sin distinguir mayúsculas/minúsculas)
-                    if (input.toLowerCase().includes('alpharius')) {
-                        addLineToTerminal('Acceso concedido. Redirigiendo...');
+                    // Verificar la respuesta (sin tildes y sin distinguir mayúsculas)
+                    if (normalizedInput === "cho") {
+                        addLineToTerminal('Correcto. Redirigiendo...');
                         setTimeout(function() {
-                            window.location.href = '../fase1/alpharius.html';
-                        }, 1000);
+                            window.location.href = 'mp.html';
+                        }, 1500);
                     } else {
-                        addLineToTerminal('Acceso no autorizado a su persona.');
+                        addLineToTerminal('Incorrecto.');
                     }
                     
                     // Limpiar el input
