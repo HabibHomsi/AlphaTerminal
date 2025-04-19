@@ -18,12 +18,17 @@
             </div>
         </div>
         <div class="terminal-body" id="terminal-output">
-           
+            <div class="terminal-line">¡Atraviésese la disformidad y viájese en el tiempo!</div>
+            <div class="terminal-line">Rememórese el día de los enamorados y UN AMOR MARCADO POR LA MUERTE.</div>
+            <div class="terminal-line">Una mujer, al borde del abismo, posee la contraseña.</div>
+            <div class="terminal-line">En sus oídos no suena como una palabra pero sus ojos divisan símbolos.</div>
+            <div class="terminal-line">No comprende, sin embargo, detecta un patrón.</div>
+            <div class="terminal-line">Cada uno de los símbolos apareció inmediatamente después de que ella pronunciara el nombre de su amado. .</div>
             <div class="terminal-line">&nbsp;</div>
             <div class="terminal-line">> <span id="user-input-display"></span><span class="cursor">█</span></div>
         </div>
         <div class="terminal-input">
-            <input type="text" id="terminal-input" autofocus placeholder="Introduzca la respuesta">
+            <input type="text" id="terminal-input" autofocus placeholder="Introduzca la respuesta...">
         </div>
     </div>
     <script src="script.js"></script>
@@ -39,13 +44,12 @@
             terminalInput.addEventListener('keypress', function(e) {
                 if (e.key === 'Enter') {
                     const input = this.value.trim().toLowerCase();
-                    const normalizedInput = input.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
                     
                     // Añadir el comando a la terminal
                     addLineToTerminal('> ' + this.value);
                     
-                    // Verificar la respuesta (sin tildes y sin distinguir mayúsculas)
-                    if (normalizedInput === "...!,") {
+                    // Verificar la respuesta
+                    if (input === "...!,") {
                         addLineToTerminal('Correcto. Redirigiendo...');
                         setTimeout(function() {
                             window.location.href = 'lord16.html';
