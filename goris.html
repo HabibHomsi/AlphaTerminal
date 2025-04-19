@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intersección - Terminal Alpha</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="terminal">
+        <div class="terminal-header">
+            <span class="terminal-title">Terminal Alpha v1.0</span>
+            <div class="terminal-controls">
+                <span class="control minimize">-</span>
+                <span class="control maximize">□</span>
+                <span class="control close">×</span>
+            </div>
+        </div>
+        <div class="terminal-body" id="terminal-output">
+            <img src="identidad_sin_cadenas_4.jpg" alt="Acertijo ID_4" class="puzzle-image">
+            <div class="terminal-line">&nbsp;</div>
+            <div class="terminal-line">> <span id="user-input-display"></span><span class="cursor">█</span></div>
+        </div>
+        <div class="terminal-input">
+            <input type="text" id="terminal-input" autofocus placeholder="Introduzca la respuesta">
+        </div>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const terminalInput = document.getElementById('terminal-input');
+            const userInputDisplay = document.getElementById('user-input-display');
+            
+            terminalInput.addEventListener('input', function() {
+                userInputDisplay.textContent = this.value;
+            });
+            
+            terminalInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    const input = this.value.trim().toLowerCase();
+                    const normalizedInput = input.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+                    
+                    addLineToTerminal('> ' + this.value);
+                    
+                    if (normalizedInput === "genesis") {
+                        addLineToTerminal('Nivel 1 concluído con éxito.');
+                        addLineToTerminal('Para completar el procedimiento, diríjase al primer video subido del canal,');
+                        addLineToTerminal('comente "Yo soy Alpharius" y manténgase a la espera de nuevas instrucciones.');
+                        addLineToTerminal('¡Hydra Dominatus!');
+                        // Deshabilitar el input después del éxito
+                        terminalInput.disabled = true;
+                    } else {
+                        addLineToTerminal('Incorrecto.');
+                    }
+                    
+                    this.value = '';
+                    userInputDisplay.textContent = '';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
