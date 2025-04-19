@@ -41,19 +41,20 @@
                     const input = this.value.trim().toLowerCase();
                     const normalizedInput = input.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
                     
+                    // Añadir el comando a la terminal
                     addLineToTerminal('> ' + this.value);
                     
+                    // Verificar la respuesta (sin tildes y sin distinguir mayúsculas)
                     if (normalizedInput === "genesis") {
-                        addLineToTerminal('Nivel 1 concluído con éxito.');
-                        addLineToTerminal('Para completar el procedimiento, diríjase al primer video subido del canal,');
-                        addLineToTerminal('comente "Yo soy Alpharius" y manténgase a la espera de nuevas instrucciones.');
-                        addLineToTerminal('¡Hydra Dominatus!');
-                        // Deshabilitar el input después del éxito
-                        terminalInput.disabled = true;
+                        addLineToTerminal('Correcto. Redirigiendo...');
+                        setTimeout(function() {
+                            window.location.href = 'genesis.html';
+                        }, 1500);
                     } else {
                         addLineToTerminal('Incorrecto.');
                     }
                     
+                    // Limpiar el input
                     this.value = '';
                     userInputDisplay.textContent = '';
                 }
