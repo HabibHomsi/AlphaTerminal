@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terminal Alpha 2A</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="terminal">
+        <div class="terminal-header">
+            <span class="terminal-title">Terminal Alpha v1.0</span>
+            <div class="terminal-controls">
+                <span class="control minimize">-</span>
+                <span class="control maximize">□</span>
+                <span class="control close">×</span>
+            </div>
+        </div>
+        <div class="terminal-body" id="terminal-output">
+            <div class="terminal-line">Nivel 2A</div>
+            <div class="terminal-line">&nbsp;</div>
+            <div class="terminal-line">S = Sesión</div>
+            <div class="terminal-line">&nbsp;</div>
+            <div class="terminal-line">Ilustración por Kabovid</div>
+            <div class="terminal-line">&nbsp;</div>
+            <img src="adeptus2a.jpg" alt="adeptus2a" class="puzzle-image">
+            <div class="terminal-line">&nbsp;</div>
+            <div class="terminal-line">> <span id="user-input-display"></span><span class="cursor">█</span></div>
+        </div>
+        <div class="terminal-input">
+            <input type="text" id="terminal-input" autofocus placeholder="Introduzca la respuesta...">
+        </div>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const terminalInput = document.getElementById('terminal-input');
+            const userInputDisplay = document.getElementById('user-input-display');
+            
+            terminalInput.addEventListener('input', function() {
+                userInputDisplay.textContent = this.value;
+            });
+            
+            terminalInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    const input = this.value.trim().toLowerCase();
+                    const normalizedInput = input.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+                    
+                    // Añadir el comando a la terminal
+                    addLineToTerminal('> ' + this.value);
+                    
+                    // Verificar la respuesta (sin tildes y sin distinguir mayúsculas)
+                    if (normalizedInput === "hawking") {
+                        addLineToTerminal('Correcto. Redirigiendo...');
+                        setTimeout(function() {
+                            window.location.href = 'hawking.html';
+                        }, 1500);
+                    } else {
+                        addLineToTerminal('Incorrecto.');
+                    }
+                    
+                    // Limpiar el input
+                    this.value = '';
+                    userInputDisplay.textContent = '';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
