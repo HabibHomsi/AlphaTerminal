@@ -50,7 +50,7 @@
                     addLineToTerminal('> ' + this.value);
                     
                     // Verificar la respuesta (sin tildes y sin distinguir mayúsculas)
-                    if (lowerInput.includes('friend') || lowerInput.includes('mellon') || lowerInput.includes('amigo')) {
+                    if (normalizedInput === "mellon") {
                         addLineToTerminal('¡La hermandad te da la bienvenida! Redirigiendo...');
                         setTimeout(function() {
                             window.location.href = 'logia.html';
