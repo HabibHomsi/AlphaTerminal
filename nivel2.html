@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terminal Alpha</title>
+    <title>Última esperanza</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="terminal">
         <div class="terminal-header">
-            <span class="terminal-title">Terminal Alpha v1.0</span>
+            <span class="terminal-title">2A</span>
             <div class="terminal-controls">
                 <span class="control minimize">-</span>
                 <span class="control maximize">□</span>
@@ -17,13 +17,13 @@
             </div>
         </div>
         <div class="terminal-body" id="terminal-output">
-            <div class="terminal-line">██████████████████████████████████████████████████</div>
-            <div class="terminal-line">█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░█</div>
-            <div class="terminal-line">█░░░░░░░ LEGIÓN ALPHA - ACCESO RESTRINGIDO ░░░░░░█</div>
-            <div class="terminal-line">█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░█</div>
-            <div class="terminal-line">██████████████████████████████████████████████████</div>
+            <div class="terminal-line">█████████████████████████████████████████████████████████████</div>
+            <div class="terminal-line">█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░█</div>
+            <div class="terminal-line">█ ÚNICA LOGIA APROBADA POR EL EMPERADOR- ACCESO RESTRINGIDO █</div>
+            <div class="terminal-line">█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░█</div>
+            <div class="terminal-line">█████████████████████████████████████████████████████████████</div>
             <div class="terminal-line">&nbsp;</div>
-            <div class="terminal-line">Terminal de la Legión Alpha. Identifíquese.</div>
+            <img src="puertaLogia" alt="puerta de la logia" class="puzzle-image">
             <div class="terminal-line">&nbsp;</div>
             <div class="terminal-line">> <span id="user-input-display"></span><span class="cursor">█</span></div>
         </div>
@@ -48,11 +48,11 @@
                     // Añadir el comando a la terminal
                     addLineToTerminal('> ' + input);
                     
-                    // Verificar si el input contiene "Alpharius" (sin distinguir mayúsculas/minúsculas)
-                    if (input.toLowerCase().includes('alpharius')) {
-                        addLineToTerminal('Acceso concedido. Redirigiendo...');
+                    // Verificar si el input contiene "friend" (sin distinguir mayúsculas/minúsculas)
+                    if (lowerInput.includes('friend') || lowerInput.includes('mellon') || lowerInput.includes('amigo')) {
+                        addLineToTerminal('¡Hola, amigo! Acceso concedido. Redirigiendo...');
                         setTimeout(function() {
-                            window.location.href = 'rey.html';
+                            window.location.href = 'logia.html';
                         }, 1000);
                     } else {
                         addLineToTerminal('Acceso no autorizado a su persona.');
