@@ -43,19 +43,20 @@
             
             terminalInput.addEventListener('keypress', function(e) {
                 if (e.key === 'Enter') {
-                    const input = this.value.trim();
+                    const input = this.value.trim().toLowerCase();
+                    const normalizedInput = input.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
                     
                     // Añadir el comando a la terminal
-                    addLineToTerminal('> ' + input);
+                    addLineToTerminal('> ' + this.value);
                     
-                    // Verificar si el input contiene "friend" (sin distinguir mayúsculas/minúsculas)
+                    // Verificar la respuesta (sin tildes y sin distinguir mayúsculas)
                     if (lowerInput.includes('friend') || lowerInput.includes('mellon') || lowerInput.includes('amigo')) {
-                        addLineToTerminal('¡Hola, amigo! Acceso concedido. Redirigiendo...');
+                        addLineToTerminal('¡La hermandad te da la bienvenida! Redirigiendo...');
                         setTimeout(function() {
                             window.location.href = 'logia.html';
-                        }, 1000);
+                        }, 1500);
                     } else {
-                        addLineToTerminal('Acceso no autorizado a su persona.');
+                        addLineToTerminal('Incorrecto.');
                     }
                     
                     // Limpiar el input
