@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Última esperanza</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="terminal">
+        <div class="terminal-header">
+            <span class="terminal-title">2B</span>
+            <div class="terminal-controls">
+                <span class="control minimize">-</span>
+                <span class="control maximize">□</span>
+                <span class="control close">×</span>
+            </div>
+        </div>
+        <div class="terminal-body" id="terminal-output">
+            <div class="terminal-line">█████████████████████████████████████████</div>
+            <div class="terminal-line">█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░█</div>
+            <div class="terminal-line">█ ÚNICA LOGIA APROBADA POR EL EMPERADOR █</div>
+            <div class="terminal-line">█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░█</div>
+            <div class="terminal-line">█████████████████████████████████████████</div>
+            <div class="terminal-line">&nbsp;</div>
+            <div class="terminal-line">¡Bien hecho! Ahora, el asunto es el siguiente. Tengo razones para creer que la legión Alpha tiene secuestrados a dos hermanos de la logia.</div>
+            <div class="terminal-line">Estoy seguro de que Ineptus, nuestro adepto del Mechanicum, ha estado enviando mensajes ocultos durante sus sapeaditas.</div>
+            <div class="terminal-line">Mira esta transmisión.</div>
+            <iframe 
+              width="560" 
+              height="315" 
+              src="https://www.youtube.com/live/BOu4DdEZXt0?si=eL3wXEHeJju_lB7H&t=8734" 
+              frameborder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowfullscreen>
+            </iframe>
+            <div class="terminal-line">Ayuda a los lobos lunares a descifrar el código.</div>
+            <div class="terminal-line">&nbsp;</div>
+            <div class="terminal-line">> <span id="user-input-display"></span><span class="cursor">█</span></div>
+        </div>
+        <div class="terminal-input">
+            <input type="text" id="terminal-input" autofocus placeholder="Nombre">
+        </div>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const terminalInput = document.getElementById('terminal-input');
+            const userInputDisplay = document.getElementById('user-input-display');
+            
+            terminalInput.addEventListener('input', function() {
+                userInputDisplay.textContent = this.value;
+            });
+            
+            terminalInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    const input = this.value.trim();
+                    
+                    // Añadir el comando a la terminal
+                    addLineToTerminal('> ' + input);
+                    
+                    if (normalizedInput === "hawking") {
+                        addLineToTerminal('Correcto. Redirigiendo...');
+                        setTimeout(function() {
+                            window.location.href = 'hawking.html';
+                        }, 1500);
+                    } else {
+                        addLineToTerminal('Incorrecto.');
+                    }
+                    
+                    // Limpiar el input
+                    this.value = '';
+                    userInputDisplay.textContent = '';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
