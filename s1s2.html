@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2D</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="terminal">
+        <div class="terminal-header">
+            <span class="terminal-title">Terminal Alpha v1.0</span>
+            <div class="terminal-controls">
+                <span class="control minimize">-</span>
+                <span class="control maximize">□</span>
+                <span class="control close">×</span>
+            </div>
+        </div>
+        <div class="terminal-body" id="terminal-output">
+            <div class="terminal-line">Nivel 2D</div>
+            <div class="terminal-line">&nbsp;</div>           
+            <div class="terminal-line">¡Vaya, esto está que arde! Casi tanto como la galaxia... En fin, ahora que tenemos los cósigos S1 y S2, tal vez este mensaje que me mandó adeptus sea de utilidad.</div>
+            <div class="terminal-line">Busca la ayuda del mentor de aquel cuyo nombre oculta este acertijo.</div>
+            <img src="mrrobot.png" alt="Lord 15" class="puzzle-image">
+            <div class="terminal-line">Agradecimiento por la ilustración de Adeptus al hermano Kabovid</div>
+            <div class="terminal-line">&nbsp;</div>
+            <div class="terminal-line">Ayuda a los lobos lunares a deducir el nombre (sin el apellido).</div>
+            <div class="terminal-line">> <span id="user-input-display"></span><span class="cursor">█</span></div>
+        </div>
+        <div class="terminal-input">
+            <input type="text" id="terminal-input" autofocus placeholder="Introduzca la respuesta...">
+        </div>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const terminalInput = document.getElementById('terminal-input');
+            const userInputDisplay = document.getElementById('user-input-display');
+            
+            terminalInput.addEventListener('input', function() {
+                userInputDisplay.textContent = this.value;
+            });
+            
+            terminalInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    const input = this.value.trim().toLowerCase();
+                    const normalizedInput = input.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+                    
+                    // Añadir el comando a la terminal
+                    addLineToTerminal('> ' + this.value);
+                    
+                    // Verificar la respuesta (sin tildes y sin distinguir mayúsculas)
+                    if (normalizedInput === "thadeus") {
+                        addLineToTerminal('Correcto. Redirigiendo...');
+                        setTimeout(function() {
+                            window.location.href = 'fayle.html';
+                        }, 1500);
+                    } else {
+                        addLineToTerminal('Incorrecto.');
+                    }
+                    
+                    // Limpiar el input
+                    this.value = '';
+                    userInputDisplay.textContent = '';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
