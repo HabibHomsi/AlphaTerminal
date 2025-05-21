@@ -46,11 +46,11 @@
                     addLineToTerminal('> ' + this.value);
                     
                     // Verificar la respuesta (sin tildes y sin distinguir mayúsculas)
-                    if (normalizedInput === "boltzmann") {
+                    if (normalizedInput === "titan") {
                         addLineToTerminal('Correcto. Redirigiendo...');
                         setTimeout(function() {
-                            window.location.href = 'const.html';
-                        }, 1500);
+                            window.location.href = 'pdl.html';
+                        }, 1000);
                     } else {
                         addLineToTerminal('Incorrecto.');
                     }
