@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2J</title>
+    <title>Última esperanza</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="terminal"> 
         <div class="terminal-header">
-            <span class="terminal-title">Terminal Alpha v1.0</span>
+            <span class="terminal-title">2J</span>
             <div class="terminal-controls">
                 <span class="control minimize">-</span>
                 <span class="control maximize">□</span>
@@ -17,7 +17,8 @@
             </div>
         </div>
         <div class="terminal-body" id="terminal-output">
-            <div class="terminal-line">2J</div>
+            <div class="terminal-line">Gracias a la ayuda de Lord 12, Saul y Thadeus lograron acceder a una sospechosa base de datos.</div>
+            <div class="terminal-line">Aparentemente, la clave para continuar está en el paquete que recibió Adeptus.</div>
             <div class="terminal-line">&nbsp;</div> 
             <img src="adeptus2j.jpg" alt="adeptus2g" class="puzzle-image">
             <div class="terminal-line">&nbsp;</div>
@@ -49,7 +50,7 @@
                     addLineToTerminal('> ' + this.value);
                     
                     // Verificar la respuesta (sin tildes y sin distinguir mayúsculas)
-                    if (normalizedInput === "alido") {
+                    if (normalizedInput === "aliado") {
                         addLineToTerminal('Correcto. Redirigiendo...');
                         setTimeout(function() {
                             window.location.href = 'b612.html';
