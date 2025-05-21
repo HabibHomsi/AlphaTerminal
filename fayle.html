@@ -48,11 +48,11 @@
                     addLineToTerminal('> ' + this.value);
                     
                     // Verificar la respuesta (sin tildes y sin distinguir mayúsculas)
-                    if (normalizedInput === "saul") {
-                        addLineToTerminal('Correcto. Redirigiendo...');
+                     if (input.toLowerCase().includes('saul')) {
+                        addLineToTerminal('Acceso concedido. Redirigiendo...');
                         setTimeout(function() {
                             window.location.href = 'tarvitz.html';
-                        }, 1500);
+                        }, 1000);
                     } else {
                         addLineToTerminal('Incorrecto.');
                     }
